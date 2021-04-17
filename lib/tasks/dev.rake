@@ -1,5 +1,5 @@
 desc "Fill the database tables with some sample data"
-task example_sample_data: :environment do
+task sample_data: :environment do
   starting = Time.now
 
   FollowRequest.delete_all
@@ -8,12 +8,16 @@ task example_sample_data: :environment do
   Photo.delete_all
   User.delete_all
 
-  12.times do
-    name = Faker::Name.first_name
+  usernames = Array.new { Faker::Name.first_name }
+
+  usernames << "alice"
+  usernames << "bob"
+
+  usernames.each do |username|
     User.create(
-      email: "#{name}@example.com",
+      email: "#{username}@example.com",
       password: "password",
-      username: name.downcase,
+      username: username.downcase,
       private: [true, false].sample,
     )
   end
