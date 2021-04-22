@@ -11,22 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :recipient_id %>
-    <%= form.text_field :recipient_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sender_id %>
-    <%= form.text_field :sender_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
+  <%= form.hidden_field :recipient_id %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Follow", class: "btn btn-outline-secondary btn-block" %>
   </div>
 <% end %>

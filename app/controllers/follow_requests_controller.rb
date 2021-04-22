@@ -22,10 +22,11 @@ class FollowRequestsController < ApplicationController
   # POST /follow_requests or /follow_requests.json
   def create
     @follow_request = FollowRequest.new(follow_request_params)
+    @follow_request.sender = current_user
 
     respond_to do |format|
       if @follow_request.save
-        format.html { redirect_to @follow_request, notice: "Follow request was successfully created." }
+        format.html { redirect_back fallback_location: root_url, notice: "Follow request was successfully created." }
         format.json { render :show, status: :created, location: @follow_request }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +39,7 @@ class FollowRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @follow_request.update(follow_request_params)
-        format.html { redirect_to @follow_request, notice: "Follow request was successfully updated." }
+        format.html { redirect_back fallback_location: root_url, notice: "Follow request was successfully updated." }
         format.json { render :show, status: :ok, location: @follow_request }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +52,7 @@ class FollowRequestsController < ApplicationController
   def destroy
     @follow_request.destroy
     respond_to do |format|
-      format.html { redirect_to follow_requests_url, notice: "Follow request was successfully destroyed." }
+      format.html { redirect_back fallback_location: root_url, notice: "Follow request was successfully destroyed." }
       format.json { head :no_content }
     end
   end

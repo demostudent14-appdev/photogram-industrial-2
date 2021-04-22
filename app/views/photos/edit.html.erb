@@ -1,6 +1,13 @@
-<h1>Editing Photo</h1>
+<div class="row mb-4">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="display-4">
+      edit photo
+    </h1>
 
-<%= render 'form', photo: @photo %>
+    <%= render 'form', photo: @photo %>
 
-<%= link_to 'Show', @photo %> |
-<%= link_to 'Back', photos_path %>
+    <hr>
+    
+    <%= link_to 'Back', :back, class: "btn btn-outline-secondary btn-block" %>
+  </div>
+</div>

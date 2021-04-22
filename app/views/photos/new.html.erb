@@ -1,5 +1,14 @@
-<h1>New Photo</h1>
+<div class="row mb-4">
+  <div class="col-md-6 offset-md-3">
+    <h1 class="display-4">
+      new photo
+    </h1>
 
-<%= render 'form', photo: @photo %>
+    <%= render 'form', photo: @photo %>
 
-<%= link_to 'Back', photos_path %>
+    <hr>
+    
+    <%= link_to 'Back', :back, class: "btn btn-outline-secondary btn-block" %>
+  </div>
+</div>
+
